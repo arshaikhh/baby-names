@@ -1,9 +1,14 @@
 import babydata from "./babynamesdata.json";
 import { useState } from "react";
+import sort from "./utils/sort";
 
-const maleNames = babydata.filter((x) => x.sex === "m");
-const femaleNames = babydata.filter((x) => x.sex === "f");
-const anyNames = babydata;
+const maleNames = babydata
+  .filter((x) => x.sex === "m")
+  .sort((a, b) => sort(a.name, b.name));
+const femaleNames = babydata
+  .filter((x) => x.sex === "f")
+  .sort((a, b) => sort(a.name, b.name));
+const anyNames = babydata.sort((a, b) => sort(a.name, b.name));
 
 interface Properties {
   id: number;
