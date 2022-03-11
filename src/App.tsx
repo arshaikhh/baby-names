@@ -17,7 +17,7 @@ interface Properties {
 }
 
 function App(): JSX.Element {
-  const [Names, setNames] = useState<Properties[]>([]);
+  const [Names, setNames] = useState<Properties[]>(anyNames);
 
   const maleClick = () => setNames(maleNames);
   const femaleClick = () => setNames(femaleNames);
@@ -25,6 +25,9 @@ function App(): JSX.Element {
 
   return (
     <>
+      <input
+      onChange={(e)=>setNames(anyNames.filter(x=>(x.name.toLowerCase().indexOf(e.target.value.toLowerCase()))===0))}
+      />
       <h1>Baby Names Data</h1>
       <hr />
       <h3>Please Select the sex of your baby</h3>
