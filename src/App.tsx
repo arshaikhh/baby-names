@@ -18,39 +18,57 @@ interface Properties {
 
 function App(): JSX.Element {
   const [Names, setNames] = useState<Properties[]>(anyNames);
+  const [Fav, setFav] = useState<Properties[]>([]);
 
   const maleClick = () => setNames(maleNames);
   const femaleClick = () => setNames(femaleNames);
   const anyClick = () => setNames(anyNames);
-
+  // const addToFav = () => setFav()
   return (
     <>
       <input
         onChange={(e) =>
           setNames(
-            anyNames.filter(
+            Names.filter(
               (x) =>
                 x.name.toLowerCase().indexOf(e.target.value.toLowerCase()) === 0
             )
           )
         }
       />
-      <h1>Baby Names Data</h1>
-      <hr />
-      <h3>Please Select the sex of your baby</h3>
-
       <button onClick={maleClick} className={"button"}>
-        Male
+        👦
       </button>
       <button onClick={femaleClick} className={"button"}>
-        Female
+        👧
       </button>
       <button onClick={anyClick} className={"button"}>
-        Any
+        ‍👧‍👦
       </button>
+      <h1>BABY NAMES DATABASE</h1>
+      <hr />
+      <h2>Your Favorite Baby Names</h2>
+      {Fav.map((x) => (
+        <li
+          key={x.id}
+          className={x.sex}
+          onClick={() => {
+            setFav(Fav.filter((y) => y !== x));
+          }}
+        >
+          {x.name}
+        </li>
+      ))}
+      <hr />
       <main className="Main">
-        {Names.map((x, id) => (
-          <li key={x.id} className={x.sex}>
+        {Names.filter((x) => !Fav.includes(x)).map((x, id) => (
+          <li
+            key={x.id}
+            className={x.sex}
+            onClick={() => {
+              setFav([...Fav, x]);
+            }}
+          >
             {x.name}
           </li>
         ))}

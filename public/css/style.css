@@ -1,14 +1,19 @@
 .text-format {
     text-align: center;
+    background:rgb(255, 255, 238);
+    font-family: 'Kaushan Script', cursive;
    
 }
 
 .button {
-    margin-right: 10px;
-    background-color: bisque;
+    margin-right: 1px;
+    background-color: white;
+    border-color: white;
     /* position:absolute; */
     justify-content: center;
     justify-items: center;
+    border-radius: 10px;
+    
 }
 
 li {
@@ -21,23 +26,18 @@ li {
     /* border-collapse: separate; */
     margin-left: 10px;
     margin-top: 10px;
+    font-size: 20px;
 }
 
 .m {
-    background-color: aqua;
+    background-color: rgba(204, 138, 16, 0.767);
 }
 
 .f {
-    background-color: pink;
+    background-color: rgb(8, 153, 153);
 }
 
 
-/* ul {
-    list-style-type: none;
-    display: inline;
-    text-align: center;
-    width: 50px;
-} */
 
 .Main{
   
@@ -45,8 +45,19 @@ li {
     margin-right: auto;
    width: 1000px;
    justify-content: center;
-   height: 1000px;
-  
-   height:auto;
+   height: auto;
+   padding: 10px;
+   border: double 3px teal;
    margin-top: 50px;
+   border-left-color: orange;
+   border-bottom-color:orange;
+
+}
+
+button:active{
+    background:olive;
+}
+
+button:focus{
+    background:olive;
 }
