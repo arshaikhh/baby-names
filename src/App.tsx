@@ -19,30 +19,55 @@ interface Properties {
 function App(): JSX.Element {
   const [Names, setNames] = useState<Properties[]>(anyNames);
   const [Fav, setFav] = useState<Properties[]>([]);
+  const [filterStorage, setfilterStorage] = useState<Properties[]>(anyNames);
+  const [activeButton, setactiveButton] = useState("");
 
-  const maleClick = () => setNames(maleNames);
-  const femaleClick = () => setNames(femaleNames);
-  const anyClick = () => setNames(anyNames);
+  const maleClick = () => {
+    setNames(maleNames);
+    setfilterStorage(maleNames);
+    setactiveButton("malebutton");
+  };
+  const femaleClick = () => {
+    setNames(femaleNames);
+    setfilterStorage(femaleNames);
+    setactiveButton("femalebutton");
+  };
+  const anyClick = () => {
+    setNames(anyNames);
+    setfilterStorage(anyNames);
+    setactiveButton("anybutton");
+  };
+
   // const addToFav = () => setFav()
   return (
     <>
       <input
         onChange={(e) =>
           setNames(
-            Names.filter(
+            filterStorage.filter(
               (x) =>
                 x.name.toLowerCase().indexOf(e.target.value.toLowerCase()) === 0
             )
           )
         }
       />
-      <button onClick={maleClick} className={"button"}>
+
+      <button
+        onClick={maleClick}
+        className={activeButton === "malebutton" ? "activeButton" : ""}
+      >
         👦
       </button>
-      <button onClick={femaleClick} className={"button"}>
+      <button
+        onClick={femaleClick}
+        className={activeButton === "femalebutton" ? "activeButton" : ""}
+      >
         👧
       </button>
-      <button onClick={anyClick} className={"button"}>
+      <button
+        onClick={anyClick}
+        className={activeButton === "anybutton" ? "activeButton" : ""}
+      >
         ‍👧‍👦
       </button>
       <h1>BABY NAMES DATABASE</h1>

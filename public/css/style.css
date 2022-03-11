@@ -54,10 +54,6 @@ li {
 
 }
 
-button:active{
-    background:olive;
-}
-
-button:focus{
+.activeButton {
     background:olive;
 }
