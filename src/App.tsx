@@ -26,7 +26,14 @@ function App(): JSX.Element {
   return (
     <>
       <input
-      onChange={(e)=>setNames(anyNames.filter(x=>(x.name.toLowerCase().indexOf(e.target.value.toLowerCase()))===0))}
+        onChange={(e) =>
+          setNames(
+            anyNames.filter(
+              (x) =>
+                x.name.toLowerCase().indexOf(e.target.value.toLowerCase()) === 0
+            )
+          )
+        }
       />
       <h1>Baby Names Data</h1>
       <hr />
